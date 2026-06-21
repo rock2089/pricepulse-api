@@ -82,3 +82,9 @@ curl "https://incl-coupons-question-pair.trycloudflare.com/trending" \
 ## 📝 License
 
 MIT — see [LICENSE](LICENSE) for details.
+
+## 📝 Blog
+
+Read about how PricePulse was built and the lessons learned:
+
+- [Building a Cross-Border Price Monitoring API (中文)](https://incl-coupons-question-pair.trycloudflare.com/blog)
