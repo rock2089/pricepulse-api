@@ -88,3 +88,10 @@ MIT — see [LICENSE](LICENSE) for details.
 Read about how PricePulse was built and the lessons learned:
 
 - [Building a Cross-Border Price Monitoring API (中文)](https://incl-coupons-question-pair.trycloudflare.com/blog)
+
+## 🎮 Live Demo
+
+Try PricePulse instantly without signing up:
+
+- [Online Demo](https://incl-coupons-question-pair.trycloudflare.com/demo) -- Search products live
+- [Google Colab Notebook](https://incl-coupons-question-pair.trycloudflare.com/pricepulse_demo.ipynb) -- Run in your browser
