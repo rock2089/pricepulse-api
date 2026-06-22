@@ -1,97 +1,100 @@
-<div align="center">
-  <h1>PricePulse API</h1>
-  <p><strong>Real-time price data for Southeast Asian & European e-commerce</strong></p>
-  <p>
-    <a href="https://incl-coupons-question-pair.trycloudflare.com">
-      <img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat-square" alt="Live Demo"/>
-    </a>
-    <a href="https://incl-coupons-question-pair.trycloudflare.com/pricing">
-      <img src="https://img.shields.io/badge/pricing-free%20tier-blue?style=flat-square" alt="Pricing"/>
-    </a>
-    <img src="https://img.shields.io/badge/products-5755-orange?style=flat-square" alt="Products"/>
-    <img src="https://img.shields.io/badge/sites-3-brightgreen?style=flat-square" alt="Sites"/>
-    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"/>
-  </p>
-</div>
+# PricePulse — Southeast Asian E-Commerce Price Monitoring API
 
----
+[![PyPI version](https://img.shields.io/pypi/v/pricepulse)](https://pypi.org/project/pricepulse/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://pypi.org/project/pricepulse/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Free 100 req/day](https://img.shields.io/badge/free-100%20req%2Fday-brightgreen)](https://incl-coupons-question-pair.trycloudflare.com)
 
-Search and compare product prices across **Carousell Singapore**, **Amazon SG**, and **Vinted Europe** in real-time. 5,755+ products indexed with daily updates.
-
-## Supported Markets
-
-| Marketplace | Region | Products |
-|-------------|--------|:--------:|
-| Carousell SG | 🇸🇬 Singapore | 2,692 |
-| Amazon SG | 🇸🇬 Singapore | — |
-| Vinted | 🇪🇺 Europe | 3,061 |
-
-## ✨ Features
-
-- **Multi-marketplace search** — Query all supported marketplaces
-- **Trending products** — See what's hot right now
-- **Price history** — Track price changes over time
-- **Arbitrage detection** — Find cross-marketplace opportunities
-- **Category browsing** — Explore products by category
-- **REST API** — Clean JSON responses, easy to integrate
-
-## 🚀 Quick Start
+**Real-time product price data from Carousell SG, Amazon SG, and Vinted.**  
+Free tier: 100 requests/day — no credit card required.
 
 ```bash
-# 1. Get your free API key
-curl -X POST https://incl-coupons-question-pair.trycloudflare.com/api/signup \
-  -H "Content-Type: application/json" \
-  -d '{"email": "your@email.com"}'
-
-# 2. Search for products
-curl "https://incl-coupons-question-pair.trycloudflare.com/search?q=iphone&site=carousell" \
-  -H "X-API-Key: ***"
-
-# 3. Check trending items
-curl "https://incl-coupons-question-pair.trycloudflare.com/trending" \
-  -H "X-API-Key: ***"
+pip install pricepulse
 ```
 
-## 💰 Pricing
+```python
+import pricepulse
+client = pricepulse.Client(api_key="your_key")
+results = client.search("ps5", site="carousell")
+```
 
-| Plan | Queries / Day | Price |
-|------|:-------------:|:-----:|
-| **Free** | 100 | **$0** |
-| **Starter** | 1,000 | **$10/mo** |
-| **Pro** | 10,000 | **$50/mo** |
+## Features
 
-> Get started free at [incl-coupons-question-pair.trycloudflare.com](https://incl-coupons-question-pair.trycloudflare.com)
+- 🔍 **Search** — Find products by keyword across platforms
+- 📈 **Trending** — See what's popular right now
+- 💰 **Arbitrage** — Discover cross-platform price differences
+- 🏷️ **Categories** — Browse structured categories
+- 📊 **Compare** — Compare prices across Carousell, Amazon SG, Vinted
 
-## 🔧 API Endpoints
+## Quick Start
 
-| Endpoint | Description |
-|----------|-------------|
-| `GET /search?q=<keyword>&site=<site>` | Search products |
-| `GET /trending` | Trending products |
-| `GET /categories` | Browse categories |
-| `GET /arbitrage` | Cross-marketplace price differences |
-| `GET /health` | API health check |
+### 1. Get your free API key
 
-## 🛠 Tech Stack
+```bash
+curl -X POST https://incl-coupons-question-pair.trycloudflare.com/api/signup \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your@email.com"}'
+```
 
-- **Backend:** Python FastAPI
-- **Data:** Automated scrapers (daily updates)
-- **Hosting:** Singapore VPS
-- **Proxy:** Cloudflare Tunnel
+### 2. Make your first request
 
-## 📝 License
+```bash
+curl "https://incl-coupons-question-pair.trycloudflare.com/search?q=laptop" \
+  -H "X-API-Key: your_api_key"
+```
 
-MIT — see [LICENSE](LICENSE) for details.
+### 3. Or use the Python client
 
-## 📝 Blog
+```python
+from pricepulse import Client
 
-Read about how PricePulse was built and the lessons learned:
+api = Client(api_key="your_api_key")
+products = api.search("iphone", site="carousell")
+for p in products[:5]:
+    print(f"{p['title']} — ${p['price']}")
+```
 
-- [Building a Cross-Border Price Monitoring API (中文)](https://incl-coupons-question-pair.trycloudflare.com/blog)
+## Pricing
 
-## 🎮 Live Demo
+| Tier | Price | Requests/day | Best for |
+|------|-------|-------------|----------|
+| Free | $0 | 100 | Try it out |
+| Starter | $10/month | 1,000 | Hobby projects |
+| Pro | $50/month | 10,000 | Production apps |
 
-Try PricePulse instantly without signing up:
+## API Reference
 
-- [Online Demo](https://incl-coupons-question-pair.trycloudflare.com/demo) -- Search products live
-- [Google Colab Notebook](https://incl-coupons-question-pair.trycloudflare.com/pricepulse_demo.ipynb) -- Run in your browser
+Full API docs at [`/docs`](https://incl-coupons-question-pair.trycloudflare.com/docs) (Swagger UI).
+
+## Data Sources
+
+- **Carousell SG** — Singapore's largest peer-to-peer marketplace
+- **Amazon SG** — Amazon Singapore
+- **Vinted** — Second-hand fashion marketplace
+
+## Use Cases
+
+- Price tracking and alerts
+- E-commerce research and analysis
+- Cross-platform arbitrage detection
+- Market trend analysis
+- Developer demos and prototypes
+
+## Why PricePulse?
+
+- **Free to start** — 100 requests/day, no credit card
+- **No complex setup** — Single REST API, instant results
+- **Southeast Asia focused** — Covers the rapidly growing SEA market
+- **Open source** — Python SDK on PyPI, full source on GitHub
+- **PayPal payments** — Secure, instant upgrades
+
+## Links
+
+- 📖 [API Documentation](https://incl-coupons-question-pair.trycloudflare.com/docs)
+- 🐍 [PyPI Package](https://pypi.org/project/pricepulse/)
+- 🐙 [GitHub Repository](https://github.com/rock2089/pricepulse-api)
+- 📦 [Dataset (5,755 products)](https://incl-coupons-question-pair.trycloudflare.com/dataset)
+
+## License
+
+MIT
