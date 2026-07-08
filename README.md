@@ -98,3 +98,14 @@ Full API docs at [`/docs`](https://incl-coupons-question-pair.trycloudflare.com/
 ## License
 
 MIT
+
+
+---
+
+## Buy the Dataset
+
+Need the raw data? Grab **10,800 products** (Carousell SG + Vinted EU) as CSV + JSON.
+
+**$3.99 / 19 yuan** - Instant download after payment.
+
+[Buy Dataset &rarr;](https://pricepulseapi.site/buy-data-pack)
