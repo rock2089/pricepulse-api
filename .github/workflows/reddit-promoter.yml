@@ -1,0 +1,32 @@
+name: Reddit Daily Promoter
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 每天UTC 12:00 (北京时间20:00)
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Post to Reddit
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER: ${{ secrets.REDDIT_USER }}
+          REDDIT_PASS: ${{ secrets.REDDIT_PASS }}
+        run: python reddit_promoter.py
+      
+      - name: Upload Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reddit-log
+          path: reddit_log.txt
