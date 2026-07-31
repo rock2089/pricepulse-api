@@ -1,0 +1,34 @@
+name: Freelancer Auto Bid
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # 每2小时运行
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  bid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Search & Bid Freelancer Projects
+        env:
+          FL_EMAIL: ${{ secrets.FL_EMAIL }}
+          FL_PASSWORD: ${{ secrets.FL_PASSWORD }}
+          FL_COOKIE: ${{ secrets.FL_COOKIE }}
+        run: python freelancer_bid.py
+      
+      - name: Upload bid report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bid-report
+          path: bid_report.txt
